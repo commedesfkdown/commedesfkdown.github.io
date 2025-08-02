@@ -79,6 +79,7 @@ body {
     max-width: 380px;
     opacity: 0;
     transform: translateY(30px);
+    margin: 0 auto;
 }
 
 .avatar {
@@ -155,6 +156,30 @@ body {
     background: rgba(255, 255, 255, 0.2);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
+.prod-label {
+    position: fixed;
+    bottom: 30px;
+    left: 0;
+    right: 0; /* Растягиваем на всю ширину */
+    margin: 0 auto; /* Центрирование */
+    width: fit-content; /* Ширина по содержимому */
+    max-width: 90%;
+    backdrop-filter: blur(10px) saturate(180%);
+    -webkit-backdrop-filter: blur(10px) saturate(180%);
+    background-color: rgba(20, 20, 30, 0.3);
+    color: rgba(255, 255, 255, 0.85);
+    padding: 10px 25px;
+    border-radius: 30px;
+    font-size: 1.0rem;
+    font-weight: 300;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    z-index: 10;
+    opacity: 0;
+    text-align: center;
+    transition: all 0.3s ease;
+    transform: translateY(30px);
+}
 
 .volume-control {
     position: fixed;
@@ -205,20 +230,27 @@ body {
 }
 
 @keyframes fadeIn {
-    to { opacity: 1; transform: translateY(0) scale(1); }
-}
-
-@keyframes glow {
-    from { text-shadow: 0 0 5px rgba(255, 255, 255, 0.7); }
-    to { text-shadow: 0 0 15px rgba(255, 255, 255, 1), 0 0 20px rgba(255, 255, 255, 0.8); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes fadeOut {
-    to { opacity: 0; transform: scale(1.1); }
+    to { opacity: 0; transform: translateY(30px); }
 }
 
 .animate-in {
     animation: fadeIn 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.fade-out {
+    animation: fadeOut 0.8s ease forwards;
+}
+
+.animate-in {
+    animation: fadeIn 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.fade-out {
+    animation: fadeOut 0.8s ease forwards;
 }
 
 .social-link {
@@ -275,10 +307,28 @@ body {
     #splash-screen h1 {
         font-size: 1.8rem;
     }
-    .glass-card { padding: 25px 20px; }
-    .avatar { width: 100px; height: 100px; }
-    .username { font-size: 1.8rem; }
-    .social-link { width: 42px; height: 42px; font-size: 1.2rem; }
+    .glass-card { 
+        padding: 25px 20px; 
+    }
+    .avatar { 
+        width: 100px; 
+        height: 100px; 
+    }
+    .username { 
+        font-size: 1.8rem; 
+    }
+    .social-link { 
+        width: 42px; 
+        height: 42px; 
+        font-size: 1.2rem; 
+    }
+    .prod-label {
+        width: 90%;
+        max-width: 300px;
+        font-size: 0.9rem;
+        padding: 8px 15px;
+        bottom: 20px;
+    }
     .volume-control {
         right: 10px;
         bottom: 10px;
