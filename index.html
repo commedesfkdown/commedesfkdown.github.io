@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Моя Визитка</title>
-    <link rel="stylesheet" href="style.css">
+    <title>@commedesfkdown</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div id="splash-screen">
         <h1>click on me</h1>
     </div>
-    <video id="video-bg" loop playsinline muted>
+    <video id="video-bg" loop playsinline muted preload="none">
         <source src="assets/background.mp4" type="video/mp4">
     </video>
     <div class="overlay"></div>
@@ -40,7 +40,6 @@
     <div class="prod-label">
         prod.commedesfkdown
     </div>
-    
     <div class="volume-control">
         <span class="volume-label">sound:</span>
         <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="0.05">
@@ -48,7 +47,7 @@
     <div class="volume-alert" id="volume-alert">
         Громкость: 5%
     </div>
-    <audio id="background-music" loop>
+    <audio id="background-music" loop preload="none">
         <source src="assets/music.mp3" type="audio/mpeg">
     </audio>
     <script src="script.js"></script>

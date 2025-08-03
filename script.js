@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', () => {
     const splashScreen = document.getElementById('splash-screen');
     const video = document.getElementById('video-bg');
     const overlay = document.querySelector('.overlay');
@@ -16,92 +16,59 @@ document.addEventListener('DOMContentLoaded', function() {
     
     let volumeAlertTimeout = null;
     audio.volume = 0.05;
-    
+
     function showVolumeAlert(volume) {
-        if (volumeAlertTimeout) {
-            clearTimeout(volumeAlertTimeout);
-        }
-        
+        clearTimeout(volumeAlertTimeout);
         volumeAlert.textContent = `Громкость: ${Math.round(volume * 100)}%`;
         volumeAlert.classList.remove('show');
         void volumeAlert.offsetWidth;
         volumeAlert.classList.add('show');
-        
-        volumeAlertTimeout = setTimeout(() => {
-            volumeAlert.classList.remove('show');
-        }, 3000);
+        volumeAlertTimeout = setTimeout(() => volumeAlert.classList.remove('show'), 3000);
     }
-    
-    volumeSlider.addEventListener('input', function() {
-        const volumeValue = parseFloat(this.value);
+
+    volumeSlider.addEventListener('input', () => {
+        const volumeValue = parseFloat(volumeSlider.value);
         audio.volume = volumeValue;
         showVolumeAlert(volumeValue);
     });
     
-    splashScreen.addEventListener('click', async function() {
+    splashScreen.addEventListener('click', async () => {
         try {
-            splashScreen.style.animation = 'fadeOut 0.8s ease forwards';
+            splashScreen.classList.add('fade-out');
             overlay.style.display = 'block';
-            video.muted = true;
             video.style.display = 'block';
             
             try {
                 await video.play();
             } catch (e) {
-                console.warn("Не удалось воспроизвести видео:", e);
+                console.warn("Video playback error:", e);
             }
             
             setTimeout(() => {
                 splashScreen.style.display = 'none';
-                
-                // Анимация появления всех элементов
-                glassCard.classList.add('animate-in');
-                volumeControl.classList.add('animate-in');
-                prodLabel.classList.add('animate-in');
-                
+                [glassCard, volumeControl, prodLabel].forEach(el => el.classList.add('animate-in'));
                 setTimeout(() => {
-                    avatar.classList.add('animate-in');
-                    username.classList.add('animate-in');
-                    tagline.classList.add('animate-in');
-                    socials.classList.add('animate-in');
+                    [avatar, username, tagline, socials].forEach(el => el.classList.add('animate-in'));
                 }, 300);
-                
-                // Через 3 секунды скрываем prod-label с анимацией
-                setTimeout(() => {
-                    prodLabel.classList.add('fade-out');
-                    // После завершения анимации скрываем элемент
-                    prodLabel.addEventListener('animationend', () => {
-                        prodLabel.style.display = 'none';
-                    }, { once: true });
-                }, 3000);
-                
-                audio.play().then(() => {
-                    showVolumeAlert(audio.volume);
-                }).catch(audioError => {
-                    console.error("Ошибка воспроизведения аудио:", audioError);
-                    
+
+                audio.play().catch(audioError => {
+                    console.error("Audio error:", audioError);
                     errorMessage.textContent = "Нажмите здесь, чтобы включить звук";
                     errorMessage.style.display = "block";
-                    
-                    errorMessage.addEventListener('click', async function() {
+                    errorMessage.addEventListener('click', async () => {
                         try {
                             await audio.play();
                             errorMessage.style.display = "none";
-                        } catch (finalError) {
+                        } catch {
                             errorMessage.textContent = "Разрешите звук в настройках браузера";
                         }
                     });
                 });
             }, 500);
         } catch (error) {
-            console.error("Общая ошибка инициализации:", error);
+            console.error("Initialization error:", error);
             errorMessage.textContent = "Ошибка загрузки, попробуйте перезагрузить страницу";
             errorMessage.style.display = "block";
         }
-    });
-    
-    window.addEventListener('load', function() {
-        video.load();
-        audio.load();
     });
 });
