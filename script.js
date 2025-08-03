@@ -13,19 +13,14 @@ document.addEventListener('DOMContentLoaded', () => {
             const volumeControl = document.querySelector('.volume-control');
             const errorMessage = document.getElementById('error-message');
             const prodLabel = document.querySelector('.prod-label');
-            
             let volumeAlertTimeout = null;
             audio.volume = 0.05;
-
-            // Проверка на мобильное устройство
             const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
             if (isMobile) {
                 volumeControl.style.display = 'none';
             }
-
             function showVolumeAlert(volume) {
-                if (isMobile) return;
-                
+                if (isMobile) return; 
                 clearTimeout(volumeAlertTimeout);
                 volumeAlert.textContent = `Громкость: ${Math.round(volume * 100)}%`;
                 volumeAlert.classList.remove('show');
@@ -33,7 +28,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 volumeAlert.classList.add('show');
                 volumeAlertTimeout = setTimeout(() => volumeAlert.classList.remove('show'), 3000);
             }
-
             if (!isMobile) {
                 volumeSlider.addEventListener('input', () => {
                     const volumeValue = parseFloat(volumeSlider.value);
@@ -41,33 +35,25 @@ document.addEventListener('DOMContentLoaded', () => {
                     showVolumeAlert(volumeValue);
                 });
             }
-            
             splashScreen.addEventListener('click', async () => {
                 try {
                     splashScreen.classList.add('fade-out');
                     overlay.style.display = 'block';
                     video.style.display = 'block';
-                    
                     try {
                         await video.play();
                     } catch (e) {
                         console.warn("Video playback error:", e);
                     }
-                    
                     setTimeout(() => {
                         splashScreen.style.display = 'none';
-                        
-                        // Не добавляем анимацию для volumeControl на мобильных
                         const elementsToAnimate = isMobile 
                             ? [glassCard, prodLabel] 
-                            : [glassCard, volumeControl, prodLabel];
-                            
+                            : [glassCard, volumeControl, prodLabel];  
                         elementsToAnimate.forEach(el => el.classList.add('animate-in'));
-                        
                         setTimeout(() => {
                             [avatar, username, tagline, socials].forEach(el => el.classList.add('animate-in'));
                         }, 300);
-
                         audio.play().catch(audioError => {
                             console.error("Audio error:", audioError);
                             errorMessage.textContent = "Нажмите здесь, чтобы включить звук";

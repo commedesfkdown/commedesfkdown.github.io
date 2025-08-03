@@ -1,9 +1,8 @@
- * {
+        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
         body {
             min-height: 100vh;
             display: flex;
@@ -15,7 +14,6 @@
             position: relative;
             background: #000;
         }
-
         #splash-screen {
             position: fixed;
             top: 0;
@@ -29,7 +27,6 @@
             z-index: 1000;
             cursor: pointer;
         }
-
         #splash-screen h1 {
             color: white;
             font-size: 1.5rem;
@@ -38,7 +35,6 @@
             text-align: center;
             text-transform: uppercase;
         }
-
         #video-bg {
             position: fixed;
             top: 50%;
@@ -53,7 +49,6 @@
             object-fit: cover;
             display: none;
         }
-
         .overlay {
             position: fixed;
             top: 0;
@@ -64,7 +59,6 @@
             z-index: -1;
             display: none;
         }
-
         .glass-card {
             backdrop-filter: blur(10px) saturate(180%);
             -webkit-backdrop-filter: blur(10px) saturate(180%);
@@ -80,7 +74,6 @@
             transform: translateY(30px);
             margin: 0 auto;
         }
-
         .avatar {
             width: 120px;
             height: 120px;
@@ -98,13 +91,11 @@
             transform: scale(0.8);
             overflow: hidden;
         }
-
         .avatar img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
-
         .username {
             color: white;
             font-size: 2.0rem;
@@ -114,7 +105,6 @@
             opacity: 0;
             transform: translateY(20px);
         }
-
         .tagline {
             color: rgba(255, 255, 255, 0.85);
             font-size: 1.0rem;
@@ -123,7 +113,6 @@
             opacity: 0;
             transform: translateY(20px);
         }
-
         .socials {
             display: flex;
             justify-content: center;
@@ -133,7 +122,6 @@
             opacity: 0;
             transform: translateY(20px);
         }
-
         .social-link {
             width: 48px;
             height: 48px;
@@ -151,13 +139,11 @@
             animation: fadeIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
             animation-delay: calc(var(--i) * 0.1s);
         }
-
         .social-link:hover {
             transform: translateY(-5px) scale(1);
             background: rgba(255, 255, 255, 0.2);
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
-
         .prod-label {
             position: fixed;
             bottom: 30px;
@@ -181,7 +167,6 @@
             text-align: center;
             transform: translateY(30px);
         }
-
         .volume-control {
             position: fixed;
             right: 20px;
@@ -200,7 +185,6 @@
             opacity: 0;
             transform: translateY(30px);
         }
-
         .volume-label {
             color: white;
             font-size: 0.9rem;
@@ -209,7 +193,6 @@
             margin-right: 5px;
             text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
         }
-
         #volume-slider {
             width: 80px;
             height: 5px;
@@ -218,7 +201,6 @@
             border-radius: 5px;
             outline: none;
         }
-
         #volume-slider::-webkit-slider-thumb {
             -webkit-appearance: none;
             width: 15px;
@@ -228,23 +210,18 @@
             cursor: pointer;
             box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
         }
-
         @keyframes fadeIn {
             to { opacity: 1; transform: translateY(0); }
         }
-
         @keyframes fadeOut {
             to { opacity: 0; transform: translateY(30px); }
         }
-
         .animate-in {
             animation: fadeIn 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
         }
-
         .fade-out {
             animation: fadeOut 0.8s ease forwards;
         }
-
         .volume-alert {
             position: fixed;
             bottom: 70px;
@@ -263,12 +240,10 @@
             opacity: 0;
             transform: translateY(20px);
         }
-
         .volume-alert.show {
             display: block;
             animation: alertIn 0.5s ease forwards, alertOut 0.5s ease forwards 2.5s;
         }
-
         .error-message {
             position: fixed;
             top: 20px;
@@ -281,15 +256,12 @@
             z-index: 100;
             display: none;
         }
-
         @keyframes alertIn {
             to { opacity: 1; transform: translateY(0); }
         }
-
         @keyframes alertOut {
             to { opacity: 0; transform: translateY(20px); }
         }
-
         @media (max-width: 600px) {
             .glass-card { 
                 padding: 25px 20px; 
