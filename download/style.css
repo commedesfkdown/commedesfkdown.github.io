@@ -148,6 +148,9 @@ body {
     margin-bottom: 5px;
     letter-spacing: -0.3px;
     position: relative;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
 }
 
 .project-title::after {
@@ -169,6 +172,9 @@ body {
     font-weight: 300;
     line-height: 1.45;
     letter-spacing: 0.2px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
 }
 
 .selection-panel {
@@ -292,6 +298,8 @@ body {
     align-items: center;
     gap: 8px;
     opacity: 0.7;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 .category-header::before, .category-header::after {
@@ -523,4 +531,236 @@ body {
 
 .credits p:hover {
     opacity: 0.9;
+}
+
+@media (max-width: 768px) {
+    .minimal-container {
+        padding: 20px 10px;
+        gap: 15px;
+    }
+    
+    .main-container {
+        flex-direction: column;
+        max-width: 100%;
+    }
+    
+    .black-box {
+        flex-direction: column;
+        padding: 15px;
+        gap: 15px;
+    }
+    
+    .photo-section {
+        flex: 0 0 150px;
+        height: 150px;
+        width: 100%;
+    }
+    
+    .project-title {
+        font-size: 22px;
+        line-height: 1.2;
+    }
+    
+    .project-subtitle {
+        font-size: 12px;
+        line-height: 1.3;
+    }
+    
+    .selection-panel {
+        width: 95%;
+        max-width: 360px;
+        padding: 12px;
+    }
+    
+    .category-header {
+        font-size: 11px;
+        padding: 6px 10px;
+    }
+    
+    .app-item {
+        padding: 6px 10px;
+        min-height: 32px;
+        gap: 6px;
+    }
+    
+    .app-icon {
+        width: 20px;
+        height: 20px;
+        font-size: 9px;
+    }
+    
+    .app-name {
+        font-size: 11px;
+    }
+    
+    .app-size {
+        font-size: 8px;
+    }
+    
+    .download-btn {
+        padding: 8px;
+        font-size: 12px;
+        gap: 4px;
+    }
+    
+    .selection-count {
+        font-size: 10px;
+    }
+    
+    .clear-selection {
+        font-size: 9px;
+    }
+    
+    .selection-hint {
+        font-size: 8px;
+    }
+    
+    .credits {
+        font-size: 9px;
+    }
+
+    .project-title, .project-subtitle {
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        hyphens: auto;
+    }
+
+    .download-btn {
+        min-height: 44px;
+    }
+    
+    .app-item {
+        min-height: 44px;
+    }
+}
+
+@media (max-width: 480px) {
+    .minimal-container {
+        padding: 15px 8px;
+    }
+    
+    .black-box {
+        padding: 12px;
+        border-radius: 12px;
+    }
+    
+    .photo-section {
+        flex: 0 0 130px;
+        height: 130px;
+    }
+    
+    .project-title {
+        font-size: 20px;
+        line-height: 1.15;
+    }
+    
+    .project-subtitle {
+        font-size: 11px;
+        line-height: 1.25;
+    }
+    
+    .selection-panel {
+        width: 98%;
+        border-radius: 12px;
+    }
+    
+    .panel-title {
+        font-size: 15px;
+    }
+    
+    .close-panel {
+        width: 22px;
+        height: 22px;
+    }
+    
+    .selection-search {
+        padding: 7px 10px;
+        font-size: 11px;
+    }
+    
+    .category-header {
+        font-size: 10px;
+        padding: 5px 8px;
+    }
+    
+    .app-item {
+        padding: 5px 8px;
+        min-height: 38px;
+        gap: 5px;
+    }
+    
+    .app-icon {
+        width: 18px;
+        height: 18px;
+        font-size: 8px;
+    }
+    
+    .app-name {
+        font-size: 10px;
+    }
+    
+    .app-size {
+        font-size: 7px;
+    }
+    
+    .download-btn {
+        padding: 7px;
+        font-size: 11px;
+        gap: 3px;
+        min-height: 40px;
+    }
+    
+    .selection-footer {
+        padding-top: 6px;
+        margin-top: 4px;
+    }
+    
+    .selection-count {
+        font-size: 9px;
+    }
+    
+    .clear-selection {
+        font-size: 8px;
+    }
+    
+    .selection-hint {
+        font-size: 7px;
+        padding-top: 2px;
+        margin-top: 4px;
+    }
+    
+    .credits {
+        margin-top: 8px;
+        font-size: 8px;
+    }
+
+    .project-title::after {
+        width: 24px;
+        height: 2px;
+    }
+
+    .app-item {
+        touch-action: manipulation;
+    }
+
+    .content-section {
+        gap: 12px;
+    }
+    
+    .selection-trigger {
+        margin-bottom: 5px;
+    }
+
+    .selection-trigger-btn {
+        min-height: 48px;
+    }
+
+    .close-panel {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .app-item {
+        padding: 8px 10px;
+    }
 }
