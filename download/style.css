@@ -524,26 +524,3 @@ body {
 .credits p:hover {
     opacity: 0.9;
 }
-
-.no-select {
-    -webkit-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    cursor: default;
-}
-
-.prod-label {
-    position: relative;
-    display: inline-block;
-}
-
-.prod-label::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 1;
-    cursor: default;
-}
