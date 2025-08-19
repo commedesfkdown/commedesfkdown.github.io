@@ -74,4 +74,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     errorMessage.style.display = "block";
                 }
             });
+            document.querySelector('.avatar').addEventListener('click', function(e) {
+                e.preventDefault();
+                window.location.href = 'download/index.html';
+            });
         });
