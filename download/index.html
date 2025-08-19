@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>скачоть</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="particles-bg">
+        <canvas class="particles-canvas"></canvas>
+    </div>
+    
+    <div class="minimal-container">
+        <div class="main-container">
+            <div class="black-box glass-effect">
+                <div class="photo-section glass-effect">
+                    <img src="https://i.pinimg.com/736x/8e/58/2b/8e582b4a88e0fc219f26f9b455cd5889.jpg" alt="Preview" class="preview-media">
+                </div>
+                
+                <div class="content-section">
+                    <div>
+                        <h2 class="project-title">Выбор приложений</h2>
+                        <p class="project-subtitle">Выбери нужные приложение</p>
+                    </div>
+                    
+                    <div class="selection-trigger">
+                        <button class="download-btn selection-trigger-btn" id="openSelectionPanel">
+                            <i class="fas fa-th-large"></i> <span id="panelToggleText">Выбрать приложения</span>
+                        </button>
+                    </div>
+                    
+                    <div class="download-buttons">
+                        <button class="download-btn download-selected" id="downloadSelected">
+                            <i class="fas fa-download"></i> Скачать выбранные
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="selection-panel glass-effect" id="selectionPanel">
+            <div class="panel-header">
+                <div class="panel-title">Доступные приложения</div>
+                <button class="close-panel" id="closeSelectionPanel">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <input type="text" class="selection-search" id="searchApps" placeholder="Поиск приложений...">
+            
+            <div class="selection-list" id="selectionList">
+            </div>
+            
+            <div class="selection-footer">
+                <div class="selection-count">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Выбрано: <strong id="selectedCount">0</strong></span>
+                </div>
+                <button class="clear-selection" id="clearSelection">Очистить</button>
+            </div>
+            
+            <div class="selection-hint">
+                Нажмите на приложение для выбора
+            </div>
+        </div>
+        
+        <div class="credits">
+            <p>prod.commedesfkdown</p>
+        </div>
+    </div>
+    
+    <script src="apps.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
