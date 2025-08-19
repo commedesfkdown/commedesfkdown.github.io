@@ -41,17 +41,17 @@ const appsData = [
     },
     { 
         id: "app6", 
-        name: "Photo Pro", 
+        name: "Photo", 
         icon: "fa-camera", 
-        size: "48 MB",
+        size: "444 MB",
         downloadUrl: "https://example.com/photo-pro.apk",
         category: "Фото и видео"
     },
     { 
         id: "app7", 
-        name: "Video Master", 
+        name: "Video", 
         icon: "fa-video", 
-        size: "64 MB",
+        size: "444 MB",
         downloadUrl: "https://example.com/video-master.apk",
         category: "Фото и видео"
     },
