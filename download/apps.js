@@ -28,7 +28,7 @@ const appsData = [
         name: "Chrome", 
         icon: "fa-brands fa-chrome", 
         size: "85 MB",
-        downloadUrl: "https://www.google.com/chrome/",
+        downloadUrl: "https://www.google.com/intl/ru_ru/chrome/",
         category: "Браузеры"
     },
     { 
@@ -36,15 +36,15 @@ const appsData = [
         name: "Firefox", 
         icon: "fa-brands fa-firefox", 
         size: "72 MB",
-        downloadUrl: "https://www.mozilla.org/ru/firefox/new/",
+        downloadUrl: "https://www.firefox.com/ru/thanks/",
         category: "Браузеры"
     },
     { 
         id: "app6", 
-        name: "Photo", 
+        name: "MPC-HC", 
         icon: "fa-camera", 
-        size: "444 MB",
-        downloadUrl: "https://example.com/photo-pro.apk",
+        size: "14 MB",
+        downloadUrl: "https://github.com/mpc-hc/mpc-hc/releases/download/1.7.13/MPC-HC.1.7.13.x64.exe",
         category: "Фото и видео"
     },
     { 
@@ -52,15 +52,15 @@ const appsData = [
         name: "Video", 
         icon: "fa-video", 
         size: "444 MB",
-        downloadUrl: "https://example.com/video-master.apk",
+        downloadUrl: "",
         category: "Фото и видео"
     },
     { 
         id: "app8", 
         name: "Яндекс Музыка", 
         icon: "fa-brands fa-yandex", 
-        size: "32 MB",
-        downloadUrl: "https://music.yandex.ru/client",
+        size: "99 MB",
+        downloadUrl: "https://music-desktop-application.s3.yandex.net/stable/Yandex_Music_x64_5.63.1.exe",
         category: "Музыка"
     },
     { 
