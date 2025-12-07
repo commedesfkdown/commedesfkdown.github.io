@@ -1,52 +1,162 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@commedesfkdown</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>cmmdsfkdwn</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="splash-screen">
-        <h1>click on me</h1>
+  <div class="sticky-header" id="stickyHeader">
+    <a class="site-title" href="#mainPage">cmmdsfkdwn</a>
+    <div>
+      <button class="top-nav-btn" onclick="scrollToPage('mainPage')">main</button>
+      <button class="top-nav-btn" onclick="scrollToPage('bioPage')">bio</button>
+      <button class="top-nav-btn" onclick="scrollToPage('picPage')">pic</button>
+      <button class="top-nav-btn" onclick="scrollToPage('vidPage')">vid</button>
+      <button class="top-nav-btn" onclick="scrollToPage('zovPage')">zov</button>
     </div>
-    <video id="video-bg" loop playsinline muted preload="none">
-        <source src="assets/background.mp4" type="video/mp4">
-    </video>
-    <div class="overlay"></div>
-    <div class="error-message" id="error-message"></div>
-    <div class="glass-card">
-        <div class="avatar">
-            <img src="assets/avatar.jpg" alt="Аватар">
-        </div>
-        <h1 class="username">@commedesfkdown</h1>
-        <p class="tagline">fourmillimeters</p>
-        <div class="socials">
-            <a href="https://t.me/undercoverforme" class="social-link" title="Telegram" style="--i: 0">
-                <i class="fab fa-telegram"></i>
-            </a>
-            <a href="https://steamcommunity.com/id/commedsfkdown/" class="social-link" title="Steam" style="--i: 1">
-                <i class="fab fa-steam"></i>
-            </a>
-            <a href="#" class="social-link" title="Spotify" style="--i: 2">
-                <i class="fab fa-spotify"></i>
-            </a>
-            <a href="#" class="social-link" title="Discord" style="--i: 3">
-                <i class="fab fa-discord"></i>
-            </a>
-        </div>
+  </div>
+
+  <div class="page" id="mainPage">
+    <div class="main-title">cmmdsfkdwn</div>
+    <div class="nav-buttons">
+      <button class="nav-button" onclick="scrollToPage('bioPage')">bio</button>
+      <button class="nav-button" onclick="scrollToPage('picPage')">pic</button>
+      <button class="nav-button" onclick="scrollToPage('vidPage')">vid</button>
+      <button class="nav-button" onclick="scrollToPage('zovPage')">zov</button>
     </div>
-        <div class="prod-label">
-            prod.commedesfkdown
+  </div>
+  
+  <div class="page" id="bioPage">
+    <div class="page-header-right">
+      <div class="title-container">
+        <div class="title-frame">
+          <i class="fa-solid fa-person title-icon"></i>
         </div>
-    <div class="volume-control">
-        <span class="volume-label">sound:</span>
-        <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="0.05">
+        <div class="title-text">bio</div>
+      </div>
     </div>
-    <audio id="background-music" loop preload="none">
-        <source src="assets/music.mp3" type="audio/mpeg">
-    </audio>
-    <script src="script.js"></script>
+    <div class="bio-container">
+      <div class="bio-decoration"></div>
+      <div class="bio-content">
+        <div class="bio-text">
+          I create digital experiences that combine minimalist design with functional elegance focusing on clean aesthetics and seamless user interactions through web development and visual design where simplicity meets sophistication in every project
+        </div>
+        
+        <div class="social-section">
+          <div class="social-title">connect</div>
+          <div class="social-grid">
+            <a href="https://t.me/yourusername" target="_blank" class="social-item">
+              <div class="social-icon">
+                <i class="fa-brands fa-telegram"></i>
+              </div>
+              <div class="social-name">telegram</div>
+            </a>
+            
+            <a href="https://steamcommunity.com/id/yourusername" target="_blank" class="social-item">
+              <div class="social-icon">
+                <i class="fa-brands fa-steam"></i>
+              </div>
+              <div class="social-name">steam</div>
+            </a>
+            
+            <a href="https://open.spotify.com/user/yourusername" target="_blank" class="social-item">
+              <div class="social-icon">
+                <i class="fa-brands fa-spotify"></i>
+              </div>
+              <div class="social-name">spotify</div>
+            </a>
+            
+            <a href="https://discord.com/users/yourusername" target="_blank" class="social-item">
+              <div class="social-icon">
+                <i class="fa-brands fa-discord"></i>
+              </div>
+              <div class="social-name">discord</div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="page" id="picPage">
+    <div class="page-header-right">
+      <div class="title-container">
+        <div class="title-frame">
+          <i class="fa-solid fa-image title-icon"></i>
+        </div>
+        <div class="title-text">pic</div>
+      </div>
+    </div>
+    <div class="carousel">
+      <div class="carousel-inner" id="carouselInner">
+        <div class="carousel-item">
+          <img src="https://i.pinimg.com/1200x/03/b3/21/03b321d29242489f704024cfec0c76de.jpg" alt="Photo 1">
+        </div>
+        <div class="carousel-item">
+          <img src="https://i.pinimg.com/736x/d5/de/c0/d5dec064f1d8e6f9d1d19735fd4185de.jpg" alt="Photo 2">
+        </div>
+        <div class="carousel-item">
+          <img src="https://i.pinimg.com/736x/b1/f6/d1/b1f6d1a24a51f89b5c2eafc07d962168.jpg" alt="Photo 3">
+        </div>
+      </div>
+      <div class="carousel-nav">
+        <div class="carousel-btn active" data-index="0"></div>
+        <div class="carousel-btn" data-index="1"></div>
+        <div class="carousel-btn" data-index="2"></div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="page" id="vidPage">
+    <div class="page-header-right">
+      <div class="title-container">
+        <div class="title-frame">
+          <i class="fa-solid fa-video title-icon"></i>
+        </div>
+        <div class="title-text">vid</div>
+      </div>
+    </div>
+    <div class="video-player">
+      <div class="video-container">
+        <img class="video-preview" id="videoPreview" src="preview.jpg" alt="Video Preview">
+        
+        <video class="video-element" id="videoElement" preload="metadata" playsinline>
+          <source src="video.mp4" type="video/mp4">
+          Ваш браузер не поддерживает видео.
+        </video>
+        
+        <div class="video-controls">
+          <div class="left-controls">
+            <button class="control-btn" id="playPauseBtn">
+              <i class="fa-solid fa-play" id="playIcon"></i>
+            </button>
+            <div class="time-display">
+              <span id="currentTime">0:00</span>
+              <span class="separator">/</span>
+              <span id="durationTime">0:00</span>
+            </div>
+          </div>
+          <div class="right-controls">
+            <button class="control-btn" id="muteBtn">
+              <i class="fa-solid fa-volume-high" id="volumeIcon"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="page" id="zovPage">
+    <div class="zov-title">zov</div>
+    <a href="#" class="download-link" onclick="downloadFile(); return false;">
+      download
+    </a>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
