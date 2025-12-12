@@ -16,3 +16,119 @@ nslookup server1.sa.local
 nslookup 192.168.1.10
 nslookup srvwin.sa.local
 6===================
+su -
+apt-get update
+apt-get install dnsmasq
+mcedit /etc/dnsmasq.conf
+
+	expand-hosts
+	domain=alt.local
+	bind-interfaces
+	listen-address=0.0.0.0
+	server=8.8.8.8
+	local=/alt.local/
+	no-resolv
+	cname=srv.alt.local,server.alt.local
+
+mcedit /etc/hosts
+
+	127.0.0.1       localhost
+	192.168.1.20    server.alt.local server
+	тут ip заменить на ip клиента   client.alt.local client
+
+systemctl restart/status dnsmasq
+
+На Windows откройте:
+Панель управления → Сетевые подключения → Свойства → IPv4 → Свойства.
+В поле "Предпочитаемый DNS-сервер" укажите IP-адрес вашего ALT Linux-сервера (например, 192.168.1.10).
+Нажмите OK.
+ping server.alt.local
+ping srv.alt.local
+nslookup client.alt.local
+nslookup 192.168.1.20
+7===================
+Install-WindowsFeature -Name AD-Domain-Services -IncludeManagementTools
+
+Install-ADDSForest `
+  -DomainName "sa.vat" `
+  -ForestMode "Win2012R2" `
+  -DomainMode "Win2012R2" `
+  -SafeModeAdministratorPassword (ConvertTo-SecureString "Admin123!" -AsPlainText -Force) `
+  -InstallDNS:$true `
+  -Force:$true
+
+🔍 4. Проверка установки домена
+После перезагрузки:
+
+Откройте «Active Directory — пользователи и компьютеры» (dsa.msc).
+Убедитесь, что есть:
+Контейнеры: Users, Computers, Domain Controllers.
+В Domain Controllers — ваш сервер (DC1).
+Откройте DNS-консоль (dnsmgmt.msc):
+В прямой зоне sa.vat — должны быть записи (A, SRV).
+В обратной зоне — PTR-запись для 192.168.1.10.
+Проверьте наличие SRV-записей в _tcp, _sites, _msdcs — они критичны для AD.
+💻 5. Подключение Windows 10-клиента к домену
+На клиенте (Windows 10):
+Убедитесь, что DNS-сервер в настройках сетевого адаптера — IP контроллера (192.168.1.10).
+Откройте:
+Панель управления → Система → Изменить параметры (в разделе "Имя компьютера").
+Нажмите «Изменить…» → выберите «Домен» → введите sa.vat.
+Введите учётные данные администратора домена (по умолчанию: Administrator, пароль — тот же, что и для DSRM, если не меняли).
+Перезагрузите клиент.
+8===================
+NAT сеть в виртуалке
+apt-get update
+apt-get install task-samba-dc
+
+sudo samba-tool domain provision \
+  --use-rfc2307 \
+  --server-role=dc \
+  --domain=srvalt \
+  --realm=SRVALT.ALT.LOCAL \
+  --adminpass=123qweR! \
+  --dns-backend=SAMBA_INTERNAL
+
+sudo cp /var/lib/samba/private/krb5.conf /etc/krb5.conf
+cat /etc/krb5.conf
+
+sudo systemctl unmask samba
+sudo systemctl enable samba --now
+sudo systemctl status samba
+
+sudo crontab -e
+	reboot /bin/systemctl restart network
+	@reboot sleep 10 && /bin/systemctl restart samba
+
+reboot
+samba-tool domain info 127.0.0.1
+9===================
+hostnamectl set-hostname cliatl.alt.local
+sudo nano /etc/net/ifaces/eth0/options
+	BOOTPROTO=dhcp
+sudo systemctl restart network
+ip --br a
+
+sudo crontab -e
+	@reboot /bin/systemctl restart network
+
+sudo nano /etc/resolv.conf
+	nameserver 192.168.1.20
+	search alt.local
+
+Подключение к домену через GUI
+Откройте:
+Меню → Центр управления системой → Пользователи → Аутентификация.
+Выберите вкладку «Домен Active Directory».
+Заполните:
+Домен: alt.local
+Рабочая группа: ALT (обязательно в верхнем регистре, как NetBIOS-имя домена из ПЗ №8)
+Имя компьютера: cliatl
+Установите галочку: «Восстановить файлы конфигурации по умолчанию».
+Нажмите «Подключиться».
+
+На сервере линуксе:
+sudo systemctl stop dnsmasq
+sudo systemctl disable dnsmasq
+
+samba-tool computer list
