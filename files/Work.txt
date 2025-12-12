@@ -1,0 +1,18 @@
+5===================
+Install-WindowsFeature -Name DNS -IncludeManagementTools
+
+Add-DnsServerPrimaryZone -Name "sa.local" -ReplicationScope "None" -ZoneFile "sa.local.dns" -DynamicUpdate "NonsecureAndSecure"
+
+Add-DnsServerResourceRecordA -ZoneName "sa.local" -Name "server1" -IPv4Address "192.168.1.10" -TimeToLive 01:00:00
+
+Add-DnsServerPrimaryZone -NetworkID "192.168.1.0/24" -ReplicationScope "None" -ZoneFile "1.168.192.in-addr.arpa.dns"
+
+Add-DnsServerResourceRecordPtr -Name "10" -ZoneName "1.168.192.in-addr.arpa" -PtrDomainName "server1.sa.local" -TimeToLive 01:00:00
+
+Add-DnsServerResourceRecordCName -ZoneName "sa.local" -Name "srvwin" -HostNameAlias "server1.sa.local"
+
+Проверка
+nslookup server1.sa.local
+nslookup 192.168.1.10
+nslookup srvwin.sa.local
+6===================
